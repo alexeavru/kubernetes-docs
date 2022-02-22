@@ -5,9 +5,9 @@ nodes:
 - role: worker
 networking:
   kubeProxyMode: "ipvs"
-kubeadmConfigPatches:
-- |
-  apiVersion: kubelet.config.k8s.io/v1beta1
-  kind: KubeletConfiguration
-  clusterDNS:
-  - 169.254.20.10
+# kubeadmConfigPatches:
+# - |
+#   apiVersion: kubelet.config.k8s.io/v1beta1
+#   kind: KubeletConfiguration
+#   clusterDNS:
+#   - 169.254.20.10

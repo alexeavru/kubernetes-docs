@@ -1,5 +1,4 @@
 ## CoreDNS
----
 ```
 # IP адрес CoreDNS
 k get svc kube-dns -n kube-system
@@ -28,12 +27,7 @@ clusterDomain: cluster.local
 
 ```
 
-
-
-
-
 ## Node Local DNS
----
 Install NodeLocal DNSCache https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/
 ```
 # Скачаем манифест
