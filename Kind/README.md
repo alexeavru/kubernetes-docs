@@ -1,6 +1,7 @@
 ## KIND (Kubernetes in Docker)
-**kind** is a tool for running local Kubernetes clusters using Docker container “nodes”.
-https://kind.sigs.k8s.io/ https://github.com/kubernetes-sigs/kind
+**kind** is a tool for running local Kubernetes clusters using Docker container “nodes” <br/>
+https://kind.sigs.k8s.io/ <br/>
+https://github.com/kubernetes-sigs/kind <br/>
 ```
 # Создать кластер
 kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.23.1
