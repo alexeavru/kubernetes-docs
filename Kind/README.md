@@ -8,4 +8,11 @@ kind create cluster --config kind-config.yaml --name test --image=kindest/node:v
 
 # Удалить кластер
 kind delete cluster --name test
+
+# Взять конфиг кластера
+kind get kubeconfig --name test
+
+# Команды
+kind get clusters
+kind get nodes --name test
 ```

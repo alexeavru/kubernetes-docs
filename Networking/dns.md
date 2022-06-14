@@ -57,6 +57,7 @@ nslookup kubernetes.default
 
 # Создать под с tcpdump
 k run tcpdump-pod --image=corfr/tcpdump
+
 ```
 Для переключения DNS на использвание Node Local DNS, надо поменять адрес ДНС в ```/var/lib/kubelet/config.yaml``` </br>
 После рестарта **kubelet** в ```/etc/resolv.conf``` пода будет прописываться адрес Local DNS
