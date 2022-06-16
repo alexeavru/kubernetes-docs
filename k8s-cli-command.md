@@ -30,7 +30,7 @@ jq  '.items[] | select(.status.reason!=null) | select(.status.reason | contains(
 kubectl get pods -n testlink --no-headers=true | awk '/stash-backup-testlink-data-pvc-backup*/{print $1}' | xargs  kubectl delete -n testlink pod
 ```
 
-```bash
+```yaml
 ## Создать под
 kubectl run nginx --image=nginx --restart=Never --port=80 -n default
 
