@@ -57,7 +57,7 @@ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP
 
 ```bash
 # Вывести постоянные тома (PersistentVolumes), отсортированные по емкости
-kubectl get pv --sort-by=.spec.capacity.storage
+kubectl get pv --sort-by='.spec.capacity.storage'
 
 # Вывести поды, отсортированные по количеству перезагрузок
 kubectl get pods --sort-by='.status.containerStatuses[0].restartCount' --all-namespaces
