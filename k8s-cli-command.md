@@ -1,16 +1,16 @@
 ## Примеры выборок в консоли
 ---
-```bash
+```python
 ## Выборка деплойментов с подами в статусе unavailable
 kubectl get --raw=/apis/apps/v1/deployments | jq '.items[] | {name: .metadata.name, replicas: .status.replicas, available: (.status.availableReplicas // 0), unavailable: (.status.unavailableReplicas // 0)} | select (.unavailable > 0)'
 ```
 
-```bash
+```python
 ## Подсчёт количества подов с разбивкой по нодам
 kubectl get pods --all-namespaces -o json | jq '.items[] | .spec.nodeName' -r | sort | uniq -c
 ```
 
-```bash
+```python
 ## Удалить поды в статусе Terminating
 kubectl get pods -n default | grep Terminating | while read line; do
   pod_name=$(echo $line | awk '{print $2}' ) \
