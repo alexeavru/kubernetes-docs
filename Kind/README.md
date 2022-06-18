@@ -4,7 +4,7 @@ https://kind.sigs.k8s.io/ <br/>
 https://github.com/kubernetes-sigs/kind <br/>
 ```
 ## Создать кластер
-kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.23.1
+kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.24.0
 
 ## Установка Calico
 kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
@@ -21,6 +21,9 @@ kind get nodes --name test
 ```
 ### Альтернативные CNI
 ```
+## Установка Flannel
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
 ## Установка Cilium
 helm repo add cilium https://helm.cilium.io/
 helm repo update
