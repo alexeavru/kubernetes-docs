@@ -61,4 +61,10 @@ kubectl get pv --sort-by='.spec.capacity.storage'
 
 # Вывести поды, отсортированные по количеству перезагрузок
 kubectl get pods --sort-by='.status.containerStatuses[0].restartCount' --all-namespaces
+
+# Выборка подов по лейблам
+kubectl get pods --selector="app=front" -n test
+
+# Удаление всех сущностей по лейблу
+kubectl delete all --selector="app=back" -n test
 ```
