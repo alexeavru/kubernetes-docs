@@ -11,7 +11,7 @@ curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/K8S-Ins
 curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/K8S-Install/01-install-k8s-centos8.sh | bash
 ```
 ### Установка кластера
-Конфиг кластера
+Конфиг кластера (используем для single-master)
 ```
 curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/K8S-Install/03-kube-config.yaml -o kube-config.yaml
 ```
@@ -105,6 +105,7 @@ curl -s https://docs.projectcalico.org/manifests/calico.yaml -O
 ```
 В файле заменим
 ```
+vim calico.yaml
 - name: CALICO_IPV4POOL_IPIP
   value: "Always"
 ```
