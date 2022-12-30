@@ -134,4 +134,5 @@ curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/K8S-Ins
 ```
 calicoctl get nodes
 calicoctl node status
+calicoctl get ippool
 ```
