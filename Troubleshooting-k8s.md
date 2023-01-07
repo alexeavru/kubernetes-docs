@@ -22,4 +22,12 @@
     k config use-context k8s-admin
     
     ```
--  
+-  Сертификаты
+    Проверка срока действия сертификатов мастер ноды
+    ```
+    kubeadm certs check-expiration
+    ```
+    Обновить все сертификаты мастер ноды
+    ```
+    kubeadm certs renew all
+    ```

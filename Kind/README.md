@@ -4,7 +4,7 @@ https://kind.sigs.k8s.io/ <br/>
 https://github.com/kubernetes-sigs/kind <br/>
 ```
 ## Создать кластер
-kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.24.0
+kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.26.0
 
 ## Установка Calico
 kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
