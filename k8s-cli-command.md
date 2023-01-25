@@ -33,12 +33,22 @@ kubectl get pods -n testlink --no-headers=true | awk '/stash-backup-testlink-dat
 ```bash
 ## Создать под
 kubectl run nginx --image=nginx --restart=Never --port=80 -n default
+kubectl run dnstools --restart=Never --rm -it --image=infoblox/dnstools:latest
 
 ## Создать сервис
 kubectl expose pod nginx --port=80 --target-port=80 -n default
 
 ## Создать деплоймент
 kubectl create deployment nginx-deployment --image nginx:1.19  --port=80 -n default
+kubectl create deployment dns-tools --image infoblox/dnstools:latest -n default
+
+```
+
+```bash
+## Стресс тест
+kubectl run stress --image=containerstack/stress:1.0.4 --restart=Never --command -- stress --cpu 1 -m 1024m --vm-bytes 1024m --timeout 60s
+
+kubectl create deployment stress --image containerstack/stress:1.0.4 -n default
 ```
 
 ```bash

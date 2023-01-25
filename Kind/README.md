@@ -3,6 +3,9 @@
 https://kind.sigs.k8s.io/ <br/>
 https://github.com/kubernetes-sigs/kind <br/>
 ```
+## Конфиг
+curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/Kind/kind-config.yaml -o kind-config.yaml
+
 ## Создать кластер
 kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.26.0
 
@@ -18,6 +21,9 @@ kind get kubeconfig --name test
 ## Команды
 kind get clusters
 kind get nodes --name test
+
+## Загрузить образ на ноды кластера
+kind --name test load docker-image nginx
 ```
 ### Альтернативные CNI
 ```

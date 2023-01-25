@@ -1,0 +1,91 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-default-securitycontext
+  annotations:
+    policies.kyverno.io/title: Add Default securityContext
+    policies.kyverno.io/category: Sample
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      A Pod securityContext entry defines fields such as the user and group which should be used to run the Pod.
+      Sometimes choosing default values for users rather than blocking is a better alternative to not impede
+      such Pod definitions. This policy will mutate a Pod to set default securityContext
+spec:
+  background: false
+  rules:
+  - name: add-default-securitycontext-containers
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    preconditions:
+      all:
+      - key: "{{request.operation}}"
+        operator: In
+        value:
+          - CREATE
+          - UPDATE
+    mutate:
+      foreach:
+      - list: "request.object.spec.containers"
+        patchStrategicMerge:
+          spec:
+            securityContext:
+              runAsUser: 10001
+              runAsGroup: 10001
+              fsGroup: 10001
+              seccompProfile:
+                type: RuntimeDefault
+            containers:
+            - name: "{{ element.name }}"
+              securityContext:
+                runAsUser: 10001
+                runAsGroup: 10001
+                capabilities:
+                  drop:
+                    - ALL
+                runAsNonRoot: true
+                allowPrivilegeEscalation: false
+                privileged: false
+                seccompProfile:
+                  type: RuntimeDefault
+  - name: add-default-securitycontext-initContainers
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    preconditions:
+      all:
+      - key: "{{request.operation}}"
+        operator: In
+        value:
+          - CREATE
+          - UPDATE
+      - key: "{{ request.object.spec.initContainers[] || '' | length(@) }}"
+        operator: GreaterThanOrEquals
+        value: 1
+    mutate:
+      foreach:
+      - list: "request.object.spec.initContainers"
+        patchStrategicMerge:
+          spec:
+            securityContext:
+              runAsUser: 10001
+              fsGroup: 10001
+              seccompProfile:
+                type: RuntimeDefault
+            initContainers:
+            - name: "{{ element.name }}"
+              securityContext:
+                runAsUser: 10001
+                runAsGroup: 10001
+                capabilities:
+                  drop:
+                    - ALL
+                runAsNonRoot: true
+                allowPrivilegeEscalation: false
+                privileged: false
+                seccompProfile:
+                  type: RuntimeDefault

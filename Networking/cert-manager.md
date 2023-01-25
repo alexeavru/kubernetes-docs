@@ -25,14 +25,14 @@ spec:
   duration: 87600h # 10y
   subject:
     organizations:
-      - "Nedra"
+      - "NDR"
     organizationalUnits:
       - "DevOps dep"
     localities:
       - "Saint-Petersburg"
     countries:
       - "RU"
-  commonName: Nedra OKD CA
+  commonName: NDR OKD CA
   secretName: ca-secret
   privateKey:
     algorithm: RSA
