@@ -1,5 +1,5 @@
 ## Kubernetes Audit [https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/]
-
+**Garfana dashboard**: https://github.com/WoodProgrammer/kubernetes-audit-dashboards
 
 ### Audit policy
 ```
