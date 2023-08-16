@@ -24,6 +24,10 @@ done
 oc get po --all-namespaces -o json | \
 jq  '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | 
 "oc delete po \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
+
+## Удалить поды в статусе Error
+kubectl delete pod --field-selector=status.phase==Failed -n default
+
 ```
 ```bash
 ## Почистить поды по маске имени
@@ -41,7 +45,6 @@ kubectl expose pod nginx --port=80 --target-port=80 -n default
 ## Создать деплоймент
 kubectl create deployment nginx-deployment --image nginx:1.19  --port=80 -n default
 kubectl create deployment dns-tools --image infoblox/dnstools:latest -n default
-
 ```
 
 ```bash
@@ -77,4 +80,7 @@ kubectl get pods --selector="app=front" -n test
 
 # Удаление всех сущностей по лейблу
 kubectl delete all --selector="app=back" -n test
+
+# Посмотреть события с типом Warning
+kubectl get ev --field-selector type=Warning -A
 ```

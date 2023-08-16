@@ -9,8 +9,13 @@ curl -s https://raw.githubusercontent.com/alexeavru/kubernetes-docs/main/Kind/ki
 ## Создать кластер
 kind create cluster --config kind-config.yaml --name test --image=kindest/node:v1.26.0
 
+## Установка kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.26.0/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mv ./kubectl /usr/local/bin/kubectl
+
 ## Установка Calico
-kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
+kubectl apply -f https://projectcalico.docs.tigera.io/archive/v3.25/manifests/calico.yaml
 
 ## Удалить кластер
 kind delete cluster --name test

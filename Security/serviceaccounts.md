@@ -50,6 +50,7 @@ kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-adm
 
 Проверка прав
 ```
+kubectl auth can-i --list
 kubectl auth can-i get pods --all-namespaces
 kubectl auth can-i get pods -n default
 kubectl auth can-i create pods

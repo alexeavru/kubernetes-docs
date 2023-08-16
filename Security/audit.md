@@ -54,10 +54,17 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
   - --audit-log-maxbackup=3
 
   volumeMounts:
+  - mountPath: /etc/kubernetes/audit-policy.yaml
+    name: audit
+    readOnly: true
   - mountPath: /var/log/kubernetes/audit/
     name: audit-log
 
   volumes:
+  - name: audit
+    hostPath:
+      path: /etc/kubernetes/audit-policy.yaml
+      type: File
   - name: audit-log
     hostPath:
       path: /var/log/kubernetes/audit/
