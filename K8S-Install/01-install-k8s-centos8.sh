@@ -3,8 +3,8 @@
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-systemctl stop NetworkManager.service
-systemctl disable NetworkManager.service
+# systemctl stop NetworkManager.service
+# systemctl disable NetworkManager.service
 
 #######################
 ## Install KubeADM Kubectl Kubelet
