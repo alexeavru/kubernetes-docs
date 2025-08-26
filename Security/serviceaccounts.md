@@ -26,8 +26,10 @@ kubectl patch sa jenkins -n default --type='json' -p='[{"op": "add", "path": "/s
 
 Сформировать kube.conf
 ```
+## Установить плагин
 kubectl krew install view-serviceaccount-kubeconfig
-kubectl view-serviceaccount-kubeconfig jenkins -n datalab > jenkins.kube-conf
+
+kubectl view-serviceaccount-kubeconfig jenkins -n default > jenkins.kube-conf
 ```
 
 
